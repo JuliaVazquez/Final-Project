@@ -1,3 +1,5 @@
-<img src="img/wine4.jpg"/>
 # Wine Recommender
+
+<img src="img/wine4.jpg"/>
+
 
