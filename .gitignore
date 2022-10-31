@@ -1,3 +1,6 @@
 *.xlsx
 *.csv
 *.xlsm
+
+
+ignore_folder
