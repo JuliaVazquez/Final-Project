@@ -91,4 +91,66 @@ SELECT body, SUM(intensity), SUM(sweetness),SUM(tannin) FROM clustered
 GROUP BY body
 ORDER BY body;
 
-SELECT * FROM clustered
+SELECT * FROM clustered;
+
+SELECT a.wine_id, a.wine_name, w.vintage_id, vintage_name FROM all_data a
+JOIN wines_6 w ON wine_id = vintage_id
+GROUP BY wine_id;
+
+SELECT vintage_id, vintage_name FROM wines_6
+WHERE vintage_id = 156187001;
+
+SELECT vintage_id, vintage_name FROM wines_6
+GROUP BY vintage_id;
+
+SELECT a.wine_id, a.wine_name, w.vintage_id, vintage_name FROM all_data a
+RIGHT JOIN wines_6 w ON wine_id = vintage_id
+GROUP BY wine_id;
+
+SELECT * FROM all_data
+GROUP BY wine_id
+ORDER BY COUNT(type);
+
+USE winery;
+
+SELECT * FROM wine w
+JOIN wine_test USING (wine_id)
+GROUP BY wine_id
+ORDER BY w.country;
+
+SELECT * FROM wine_test
+GROUP BY country;
+
+SELECT * FROM purchase p
+JOIN purchase_test USING (wine_id)
+GROUP BY p.wine_id;
+
+SELECT * FROM purchase_test
+GROUP BY wine_id;
+
+SELECT * FROM wine;
+
+USE winery;
+
+SELECT * FROM wine
+JOIN wine_test USING (wine_id)
+GROUP BY wine_id;
+
+SELECT w.wine_id, w.wine_name FROM wine_test
+JOIN wine w USING(wine_id)
+GROUP BY wine_id;
+
+USE clean_winery;
+
+SELECT wine_id, type, wine_name, country, varietal_name, IFNULL(style_id, 0) AS style_id, body, acidity_1, acidity_2, fizziness, intensity, sweetness, tannin FROM wine
+LEFT JOIN purchase USING (wine_id)
+LEFT JOIN  style USING (wine_id)
+LEFT JOIN grapes USING (wine_id)
+ORDER BY style_id;
+
+USE clean_winery;
+
+ SELECT d.wine_id, d.type, d.wine_name, d.country, w.region, d.varietal_name, w.winery, w.year, d.style_id, d.body, s.body_description, d.acidity_1, s.acidity_description, d.acidity_2, d.fizziness, d.intensity, d.sweetness, d.tannin, p.vol_ml, p.price_eur, w.num_ratings, w.rate FROM to_clean d
+LEFT JOIN wine w USING (wine_id)
+LEFT JOIN purchase p USING (wine_id)
+LEFT JOIN style s USING (wine_id);
