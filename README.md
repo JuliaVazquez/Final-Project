@@ -5,7 +5,7 @@
 ## Process
 1. Scraping websites and storing relevant data into different datasets.
 2. Data cleaning :
-  - Handling duplicates and NaNs
+      - Handling duplicates and NaNs
   - Dealing with redundant information
   - Deciding dropping columns and/or rows
 3. Using SQL, import the cleaned data to get 2 final datasets:
